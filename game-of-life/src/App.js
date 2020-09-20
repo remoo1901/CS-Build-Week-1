@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import Universe from './logic/Universe';
+import Info from "./Info"
 
 export default class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
       universe: new Universe(),
-      size: [90, 20],
+      size: [80, 20],
       gameRunning: false,
       interval: 50
     }
@@ -40,10 +41,10 @@ export default class Game extends Component {
   handleColumnChange(event) {
     if(!this.state.gameRunning) {
       var actualSize = this.state.size;
-      if(event.target.value < 90)
+      if(event.target.value < 80)
         actualSize[0] = event.target.value;
       else
-        actualSize[0] = 90;
+        actualSize[0] = 80;
 
       this.setState({
         size: actualSize,
@@ -120,6 +121,8 @@ export default class Game extends Component {
 
   render() {
     return (
+      <>
+      <h1 className="header">John Conway's Game Of Life</h1>
       <div className="worldContainer">
         <div className="headerContainer">
           <div className="headerInnerContainer">
@@ -146,8 +149,12 @@ export default class Game extends Component {
         {this.renderBoard()}
         </div>
       </div>
+      <div>< Info /></div>
+      </>
     );
+    
   }
+  
 }
 
 class Cell extends Component {
