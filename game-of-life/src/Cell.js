@@ -3,11 +3,12 @@ import "./App.css";
 
 
 class Cell extends Component {
-  render() {
-    return (<div className="cellContainer"></div>)
-
+    render() {
+      return (
+        <div onClick={() => this.props.storeCell(this.props.position)} className={this.props.live ? "cellContainerLive" : "cellContainerDead"}></div>
+      );
+    }
   }
-}
 
 
 export default Cell;
